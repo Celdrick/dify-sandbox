@@ -21,21 +21,22 @@ jobs:
       # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       # AWS_REGION: ${{ secrets.AWS_REGION }}
 
-  build-arm64:
-    uses: ./.github/workflows/build.yml
-    with:
-      runner: arm64_runner
-      arch: arm64
-      arch_label: ARM64
-    secrets:
-      DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
-      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-      # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      # AWS_REGION: ${{ secrets.AWS_REGION }}
+  # build-arm64:
+  #   uses: ./.github/workflows/build.yml
+  #   with:
+  #     runner: arm64_runner
+  #     arch: arm64
+  #     arch_label: ARM64
+  #   secrets:
+  #     DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
+  #     DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+  #     # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #     # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #     # AWS_REGION: ${{ secrets.AWS_REGION }}
 
   build-universal:
-    needs: [build-amd64, build-arm64]
+    # needs: [build-amd64, build-arm64]
+    needs: [build-amd64]
     runs-on: ubuntu-latest
     env:
       DOCKERHUB_IMAGE: ${{ vars.DIFY_SANDBOX_IMAGE_NAME || 'langgenius/dify-sandbox' }}
