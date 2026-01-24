@@ -35,8 +35,7 @@ jobs:
       # AWS_REGION: ${{ secrets.AWS_REGION }}
 
   build-universal:
-    # needs: [build-amd64, build-arm64]
-    needs: [build-amd64]
+    needs: [build-amd64, build-arm64]
     runs-on: ubuntu-latest
     env:
       DOCKERHUB_IMAGE: ${{ vars.DIFY_SANDBOX_IMAGE_NAME || 'langgenius/dify-sandbox' }}
