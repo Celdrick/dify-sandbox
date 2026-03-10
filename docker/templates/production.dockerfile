@@ -37,7 +37,7 @@ COPY docker/entrypoint.sh /entrypoint.sh
 # Set permissions and install dependencies
 RUN chmod +x /main /env /entrypoint.sh \
     && pip3 install --no-cache-dir ${PYTHON_PACKAGES} \
-    && pip3 install --no-cache-dir -r /dependencies/python-requirements.txt
+    && pip3 install --no-cache-dir -r /dependencies/requirements.txt
 
 # Download Node.js based on architecture and run environment initialization
 RUN case "${TARGETARCH}" in \
