@@ -31,7 +31,7 @@ COPY env /env
 
 # Copy configuration files
 COPY conf/config.yaml /conf/config.yaml
-COPY dependencies/requirements.txt /dependencies/requirements.txt
+COPY dependencies /dependencies
 COPY docker/entrypoint.sh /entrypoint.sh
 
 # Set permissions and install dependencies
